@@ -8,6 +8,7 @@ Princple:
 3. Audio frame is keep the same from source to target.
 
 Reference:
+
 https://developer.android.com/reference/android/media/MediaCodec.html
 
 http://bigflake.com/mediacodec/
