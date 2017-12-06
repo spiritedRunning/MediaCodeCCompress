@@ -7,8 +7,7 @@ Princple:
 2. Reduce video resolution to 640x480, bitrate to 500k, frame rate to 30, I frame interval is 3.
 3. Audio frame is keep the same from source to target.
 
-# Reference:
-
+Reference:
 https://developer.android.com/reference/android/media/MediaCodec.html
 http://bigflake.com/mediacodec/
 https://qiita.com/yuya_presto/items/d48e29c89109b746d000#mediaformat
