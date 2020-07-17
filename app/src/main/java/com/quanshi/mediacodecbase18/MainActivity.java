@@ -3,6 +3,8 @@ package com.quanshi.mediacodecbase18;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaCodecInfo;
+import android.media.MediaCodecList;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -24,6 +26,8 @@ import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -40,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        listAllCodecs();
     }
 
 
@@ -154,6 +160,29 @@ public class MainActivity extends AppCompatActivity {
                     Log.w(TAG, "deleteFile->delete file by rm: " + e);
                 }
             }
+        }
+    }
+
+
+    private void listAllCodecs() {
+        int numCodecs = MediaCodecList.getCodecCount();
+        List<MediaCodecInfo> encoderList = new ArrayList<>();
+        List<MediaCodecInfo> decoderList = new ArrayList<>();
+
+        for (int i = 0; i < numCodecs; i++) {
+            MediaCodecInfo codecInfo = MediaCodecList.getCodecInfoAt(i);
+            if (codecInfo.isEncoder()) {
+                encoderList.add(codecInfo);
+            } else {
+                decoderList.add(codecInfo);
+            }
+        }
+
+        for (MediaCodecInfo info : encoderList) {
+            Log.i(TAG, "encoder: " + info.getName());
+        }
+        for (MediaCodecInfo info : decoderList) {
+            Log.i(TAG, "decoder: " + info.getName());
         }
     }
 }
