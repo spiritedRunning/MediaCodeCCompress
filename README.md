@@ -10,3 +10,5 @@
 3. Audio frame is keep the same from source to target.
 4. Only support apiLevel 18 above(Android 4.3).
 
+参考：
+https://github.com/ypresto/android-transcoder
